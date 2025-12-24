@@ -289,6 +289,10 @@ while True :
         speak("My name is Sage")
         logging.info("User asked name")
 
+    elif "hi" in say :
+        speak("Hello sir How can I help you?")
+        logging.info("User asked name")
+
     elif say == "who created you" :
         speak("Yeaser Mustabi created me")
         logging.info("User asked creator name")
