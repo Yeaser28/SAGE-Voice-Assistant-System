@@ -202,10 +202,12 @@ def player_move(board):
             col = int(input("Enter column (0, 1, 2): "))
             if row not in range(3) or col not in range(3) or board[row][col] != " ":
                 print("Invalid move, try again.")
+                speak("Invalid move, try again.")
                 continue
             return row, col
         except ValueError:
             print("Please enter numbers only.")
+            speak("Please enter numbers only.")
 
 def ai_move(board):
     # Simple AI: choose a random empty spot
@@ -214,7 +216,7 @@ def ai_move(board):
 
 def tic_tac_toe():
     board = [[" " for _ in range(3)] for _ in range(3)]
-    current_player = "X"
+    current_player = "Yeaser"
 
     while True:
         print_board(board)
@@ -230,11 +232,13 @@ def tic_tac_toe():
         if check_winner(board, current_player):
             print_board(board)
             print(f"Player {current_player} wins!")
+            speak(f"Player {current_player} wins!")
             break
 
         if is_full(board):
             print_board(board)
             print("It's a tie!")
+            speak("It's a tie!")
             break
 
         current_player = "O" if current_player == "X" else "X"
@@ -319,8 +323,8 @@ while True :
     
     # Calculator
     elif "open calculator" in say :
-        speak("Openning Claculator")
-        print("Openning Claculator.....")
+        speak("Openning Calculator")
+        print("Openning Calculator.....")
         subprocess.Popen("calc.exe")
         logging.info("User opened calculator")
     
@@ -544,7 +548,7 @@ while True :
     # Date
 
     elif "date" in say :
-        day = datetime.datetime.now().date
+        day = datetime.datetime.now().day
         month = datetime.datetime.now().month
         year = datetime.datetime.now().year
 
