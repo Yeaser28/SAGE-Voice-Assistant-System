@@ -60,7 +60,6 @@ This project is a versatile voice assistant that can recognize and execute a wid
 ```bash
    pyinstaller --onefile Sage.py
 ```
-***There is an executable file in dist directory.***
 
 # 🧑‍💻 Author
 
