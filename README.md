@@ -53,3 +53,18 @@ This project is a versatile voice assistant that can recognize and execute a wid
    python -m pip install -r requirements.txt
 ```
 
+# For exe file conversion
+```bash
+   pip install pyinstaller
+```
+```bash
+   pyinstaller --onefile Sage.py
+```
+***There is an executable file in dist directory.***
+
+# 🧑‍💻 Author
+
+**Yeaser Mustabi Anik**
+
+***Inspired by Jarvis in Ironman***
+

@@ -7,6 +7,7 @@ import wikipedia
 import webbrowser
 import random
 import subprocess
+import google.genai as genai
 
 LOGS_DIR = "logs"
 LOG_FILE_NAME = "application.log"
@@ -129,6 +130,27 @@ def Select():
     except Exception as e:
         logging.info(e)
         # return None
+
+def gemini_model_response(user_input):
+    GEMINI_API_KEY = "AIzaSyAb3zvRHjzZI-mK342wmzpEsKJAmf2cCW4"
+    client = genai.Client(api_key=GEMINI_API_KEY)
+    prompt = f"You are Sage and act like JARVIS the ai system of Ironman.Define in 2 lines {user_input}"
+
+    try:
+        response = client.models.generate_content(
+            model="gemini-2.5-flash",
+            contents=prompt
+        )
+
+        result_text = response.text.strip()
+        print(result_text)
+        speak(result_text)
+
+    except Exception as e:
+        print(f"An error occurred: {e}")
+        speak("Sorry, something went wrong.")
+
+
 
 
 def GuessNumber() :
@@ -572,5 +594,5 @@ while True :
         logging.info("User opened Linkedin")
     
     else :
-        speak("Sorry sir I can't help you with that")
+        gemini_model_response(say)
     
