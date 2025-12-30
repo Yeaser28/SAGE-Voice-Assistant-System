@@ -8,6 +8,9 @@ import webbrowser
 import random
 import subprocess
 import google.genai as genai
+from dotenv import load_dotenv # type: ignore
+
+load_dotenv()
 
 LOGS_DIR = "logs"
 LOG_FILE_NAME = "application.log"
@@ -132,9 +135,9 @@ def Select():
         # return None
 
 def gemini_model_response(user_input):
-    GEMINI_API_KEY = "AIzaSyAb3zvRHjzZI-mK342wmzpEsKJAmf2cCW4"
+    GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
     client = genai.Client(api_key=GEMINI_API_KEY)
-    prompt = f"You are Sage and act like JARVIS the ai system of Ironman.Define in 2 lines {user_input}"
+    prompt = f"You are Sage and act like JARVIS the ai system of Ironman.Define in short and also follow the commands. {user_input}"
 
     try:
         response = client.models.generate_content(
@@ -296,6 +299,9 @@ def Greeting():
 
 Greeting()
 
+cal = None
+
+
 while True :
    
     
@@ -344,12 +350,12 @@ while True :
         logging.info("User asked time")
     
     # Calculator
-    elif "open calculator" in say :
+    elif "open calculator" in say : 
         speak("Openning Calculator")
         print("Openning Calculator.....")
-        subprocess.Popen("calc.exe")
+        cal = subprocess.Popen("calc.exe")
         logging.info("User opened calculator")
-    
+
     # Notepad 
 
     elif "open notepad" in say :
