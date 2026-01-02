@@ -53,6 +53,14 @@ This project is a versatile voice assistant that can recognize and execute a wid
    python -m pip install -r requirements.txt
 ```
 
+4. Create a `.env` file in the project root.
+
+5. Add your own Gemini API key like this in .env file:
+```bash
+   GEMINI_API_KEY="TRDYTr65ej..............."
+```
+
+
 # For exe file conversion
 ```bash
    pip install pyinstaller
